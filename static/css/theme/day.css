@@ -1,0 +1,146 @@
+body {
+    background-color: #f0f0f0;
+    color: inherit;
+}
+
+body a {
+    color: #24a0ed;
+}
+
+body a:hover {
+    color: inherit;
+}
+
+hr {
+    border-color: white;
+}
+
+.close, .close:hover {
+    color: black;
+}
+
+.header {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid gray;
+}
+
+.header .list-inline-item a {
+    color: black;
+    font-weight: bold;
+}
+
+.header-second {
+    background-color: #cee3f8;
+    border-bottom: 1px solid #5f99cf;
+}
+
+.header-second .title a {
+    color: black;
+    font-weight: bold;
+}
+
+.header-third {
+    background-color: white;
+}
+
+.main-section {
+    background-color: white;
+}
+
+.footer {
+    border-top: 1px solid gray;
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.post {
+    background-color: white;
+}
+
+.post .post-child {
+    border-left: 1px solid black;
+}
+
+.post .title a {
+    font-size: medium;
+    font-weight: bold;
+    color: #0000ff;
+}
+
+.post .post-buttons a {
+    color: #888;
+    font-weight: bold;
+}
+
+.post .post-buttons-bottom a {
+    color: #888;
+    font-weight: normal;
+}
+
+.post .post-buttons-bottom .highlight {
+    color: #24a0ed;
+    font-weight: 700;
+}
+
+.post .author {
+    color: #369 !important;
+    font-weight: normal;
+}
+
+.domain a {
+    color: #888;
+}
+
+.domain-offsite {
+    color: purple;
+}
+
+.modal-content {
+    background-color: #f0f0f0;
+    color: black;
+ }
+
+.text-alert {
+    color: red !important;
+}
+
+.text-mine {
+    color: #ff4500 !important;
+}
+
+.badge-danger {
+    background-color: red;
+}
+
+.badge-success {
+    color: black;
+    background-color: lime !important;   
+}
+
+.badge-nsfw {
+    color: black;
+    background-color: hotpink !important;   
+}
+
+.badge-pinned {
+    color: black;
+    background-color: orange !important;   
+}
+
+.btn:hover, .btn:focus, .btn:active, .btn:active:focus, .btn.active, .open>.dropdown-toggle.btn {
+    color: #fff !important;
+    background-color: gray !important;
+    border-color: gray !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-outline-primary {
+    color: black;
+    border-color: black;
+}
+
+.btn-outline-danger {
+    color: red;
+    border-color: red;
+}

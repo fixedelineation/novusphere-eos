@@ -1,123 +1,72 @@
 <template>
   <div> 
-    <SubmitPostModal ref="submitModal" :sub="mainPost.data.json_metadata.sub" :postContentCallback="postContent" :replyUuid="mainPost.data.post_uuid" :replyAccount="mainPost.data.poster"></SubmitPostModal>
-    <Header>
-      <span class="sub"><router-link :to="'/e/' + mainPost.data.json_metadata.sub">{{ mainPost.data.json_metadata.sub }}</router-link></span>          
-    </Header>
+    <PostHistoryModal ref="history_modal"></PostHistoryModal>
+    <SubmitPostModal ref="submit_modal" :sub="opening_post.data.json_metadata.sub" :post_content_callback="postContent" :reply_uuid="opening_post.data.post_uuid" :reply_account="opening_post.data.poster"></SubmitPostModal>
+    <HeaderSection :load="load">
+      <span class="title mr-3"><router-link :to="'/e/' + opening_post.data.json_metadata.sub">{{ opening_post.data.json_metadata.sub }}</router-link></span>          
+    </HeaderSection>
     <MainSection>
       <div class="thread">
-        <Post :submitModal="$refs.submitModal" :post="mainPost" :showContent="true" v-bind="mainPost"></post>
+        <Post :submit_modal="$refs.submit_modal"
+          :history_modal="$refs.history_modal"
+          :post="main_post"
+          :op="main_post.data.poster" 
+          :show_content="true" 
+          v-bind="main_post">
+        </Post>
       </div>
     </MainSection>
   </div>
 </template>
 
 <script>
-import { GetNovusphere } from "../novusphere"
-import { GetEOS, ScatterConfig, ScatterEosOptions } from '../eos'
-import { MigratePost } from '../migrations'
-import { v4 as uuidv4 } from "uuid"
-import jQuery from "jquery"
+import { v4 as uuidv4 } from "uuid";
+import jQuery from "jquery";
 
-import Post from "./Post.vue"
-import SubmitPostModal from './SubmitPostModal.vue'
-import Header from './Header'
-import MainSection from './MainSection'
+import ui from "@/ui";
+
+import SubmitPostModal from "@/components/modal/SubmitPostModal";
+import PostHistoryModal from "@/components/modal/PostHistoryModal";
+
+import Post from "@/components/core/Post";
+
+import HeaderSection from "@/components/section/HeaderSection";
+import MainSection from "@/components/section/MainSection";
 
 export default {
   name: "Thread",
   components: {
-    'Post': Post,
-    'SubmitPostModal': SubmitPostModal,
-    'Header': Header,
-    'MainSection': MainSection
+    SubmitPostModal: SubmitPostModal,
+    PostHistoryModal: PostHistoryModal,
+    Post: Post,
+    HeaderSection: HeaderSection,
+    MainSection: MainSection
   },
-  mounted: async function() {
-    await this.loadThread();
+  watch: {
+    "$route.params.id": function() {
+      this.load();
+    },
+    "$route.params.child_id": function() {
+      this.load();
+    }
+  },
+  async mounted() {
+    this.load();
   },
   methods: {
-    loadThread: async function() {
-      var novusphere = GetNovusphere();
-      var apiResult = await novusphere.api({
-        'find': novusphere.config.collection,
-        'maxTimeMS': 1000,
-        'filter': {
-          'transaction': this.$route.params.id
-        }
-      });
-
-      var mainPost = apiResult.cursor.firstBatch[0];
-
-      apiResult = await novusphere.api({
-          'find': novusphere.config.collection,
-          'maxTimeMS': 1000,
-          'filter': {
-            'data.reply_to_post_uuid': mainPost.data.post_uuid
-          }
-      });
-
-      var responses = apiResult.cursor.firstBatch;
-      responses.splice(0, 0, mainPost);
-      
-      var commentMap = {};
-      for (var i = 0; i < responses.length; i++) {
-        var p = responses[i];
-        MigratePost(p);
-        
-        commentMap[p.data.post_uuid] = p;
-
-        if (i > 0) {
-            var tree;
-            var parent_uuid = p.data.json_metadata.parent_uuid;
-            parent_uuid = (parent_uuid) ? parent_uuid : mainPost.data.post_uuid;
-
-            var parent = commentMap[parent_uuid];
-
-            // if this is is an edit, update parent content
-            // check parent content isn't already newest
-            // check that this post is actually by the person who made original post
-            if (p.data.json_metadata.edit) { 
-                if (p.data.poster == parent.data.poster &&
-                    p.createdAt > parent.createdAt) {
-
-                  var title = parent.data.json_metadata.title;
-
-                  parent.data.content = p.data.content;
-                  parent.data.json_metadata = p.data.json_metadata;
-                  parent.data.json_metadata.title = title;
-                  parent.createdAt = p.createdAt;
-                  parent.transaction = p.transaction;
-                }
-            }
-            else {
-              p.depth = parent.depth + 1;
-              parent.children.push(p);
-            }
-        }
-      }
-
-      //console.log(responses);
-      //console.log(mainPost);
-      this.$data.mainPost = mainPost;
+    async load() {
+      var thread = await ui.views.Thread(this.$route.params.id, this.$route.params.child_id);
+      this.opening_post = thread.opening_post;
+      this.main_post = thread.main_post;
     },
-    postContent: function(txid) {
-      this.loadThread(); // reload thread
+    postContent(txid, data) {
+      this.load(); // reload thread
     }
   },
   data() {
     return {
-      mainPost: {
-        children: [],
-        data: {
-          title: '',
-          json_metadata: {
-            'sub': 'novusphere'
-          },
-        }
-      },
-      post: { // for making a new post
-        content: '',
-      }
+      opening_post: ui.helpers.PlaceholderPost(),
+      main_post: ui.helpers.PlaceholderPost()
     };
   }
 };
