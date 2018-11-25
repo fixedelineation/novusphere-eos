@@ -1,1 +1,151 @@
+body {
+    background-color: #12161c;
+    color: white;
+}
 
+body a {
+    color: blue;
+}
+
+body a:hover {
+    color: white;
+}
+
+hr {
+    border-color: white;
+}
+
+.close, .close:hover {
+    color: white;
+}
+
+.header {
+    background-color: black;    
+    border-bottom: 1px solid black;
+}
+
+.header .list-inline-item a {
+    color: cyan;
+    font-weight: bold;
+}
+
+.header-second {
+    background-color: #12161c;
+    border-bottom: 1px solid #12161c;
+}
+
+.header-second .title a {
+    color: cyan;
+    font-weight: bold;
+}
+
+.header-third {
+    background-color: #12161c;
+}
+
+.main-section {
+    background-color: #12161c;
+}
+
+.footer {
+    border-top: 1px solid #12161c;
+    background-color: #12161c;
+    color: white;
+}
+
+.post {
+    background-color: #12161c;
+}
+
+.post .post-child {
+    border-left: 1px solid #1f2833;
+}
+
+.post .title a {
+    font-size: medium;
+    font-weight: bold;
+    color: white;
+}
+
+.post .post-buttons a {
+    color: #888;
+    font-weight: bold;
+}
+
+.post .post-buttons-bottom a {
+    color: #888;
+    font-weight: normal;
+}
+
+.post .post-buttons-bottom .highlight {
+    color: cyan;
+    font-weight: 700;
+}
+
+.post .author {
+    color: cyan !important;
+    font-weight: normal;
+}
+
+.domain a {
+    color: #888;
+}
+
+.domain-offsite {
+    color: cyan;
+}
+
+.modal-content {
+    background-color: #1f2833;
+    color: white;
+ }
+
+.text-alert {
+    color: red !important;
+}
+
+.text-mine {
+    color: #ff4500 !important;
+}
+
+.badge-danger {
+    background-color: red;
+}
+
+.badge-success {
+    color: black;
+    background-color: lime !important;   
+}
+
+.badge-nsfw {
+    color: black;
+    background-color: hotpink !important;   
+}
+
+.badge-pinned {
+    color: black;
+    background-color: orange !important;   
+}
+
+.btn:hover, .btn:focus, .btn:active, .btn:active:focus, .btn.active, .open>.dropdown-toggle.btn {
+    color: #fff !important;
+    background-color: gray !important;
+    border-color: gray !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-outline-primary {
+    color: cyan;
+    border-color: cyan;
+}
+
+.btn-outline-secondary {
+    color: white;
+    border-color: white;
+}
+
+.btn-outline-danger {
+    color: red;
+    border-color: red;
+}
