@@ -35,7 +35,7 @@ hr {
 }
 
 .header-second .title a {
-    color: rgba(0,163,239,.7);
+    color: (0,163,239,.7);
     font-weight: bold;
 }
 
@@ -136,8 +136,8 @@ hr {
 }
 
 .btn-outline-primary {
-    color: cyan;
-    border-color: cyan;
+    color: rgba(0,163,239,.7);
+    border-color: rgba(0,163,239,.7);
 }
 
 .btn-outline-secondary {
