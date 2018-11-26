@@ -4,7 +4,7 @@ body {
 }
 
 body a {
-    color: blue;
+    color: rgba(0,163,239,.7);
 }
 
 body a:hover {
@@ -25,7 +25,7 @@ hr {
 }
 
 .header .list-inline-item a {
-    color: blue;
+    color: rgba(0,163,239,.7);
     font-weight: bold;
 }
 
@@ -35,7 +35,7 @@ hr {
 }
 
 .header-second .title a {
-    color: blue;
+    color: rgba(0,163,239,.7);
     font-weight: bold;
 }
 
@@ -78,12 +78,12 @@ hr {
 }
 
 .post .post-buttons-bottom .highlight {
-    color: blue;
+    color: rgba(0,163,239,.7);
     font-weight: 700;
 }
 
 .post .author {
-    color: blue !important;
+    color: rgba(0,163,239,.7) !important;
     font-weight: normal;
 }
 
@@ -92,7 +92,7 @@ hr {
 }
 
 .domain-offsite {
-    color: blue;
+    color: rgba(0,163,239,.7);
 }
 
 .modal-content {
@@ -136,125 +136,8 @@ hr {
 }
 
 .btn-outline-primary {
-    color: blue;
-    border-color: blue;
-}
-
-.btn-outline-secondary {
-    color: white;
-    border-color: white;
-}
-
-.btn-outline-danger {
-    color: red;
-    border-color: red;
-}
-}
-
-.header-second .title a {
-    color: blue;
-    font-weight: bold;
-}
-
-.header-third {
-    background-color: #12161c;
-}
-
-.main-section {
-    background-color: #12161c;
-}
-
-.footer {
-    border-top: 1px solid #12161c;
-    background-color: #12161c;
-    color: white;
-}
-
-.post {
-    background-color: #12161c;
-}
-
-.post .post-child {
-    border-left: 1px solid #1f2833;
-}
-
-.post .title a {
-    font-size: medium;
-    font-weight: bold;
-    color: white;
-}
-
-.post .post-buttons a {
-    color: #888;
-    font-weight: bold;
-}
-
-.post .post-buttons-bottom a {
-    color: #888;
-    font-weight: normal;
-}
-
-.post .post-buttons-bottom .highlight {
-    color: blue;
-    font-weight: 700;
-}
-
-.post .author {
-    color: blue !important;
-    font-weight: normal;
-}
-
-.domain a {
-    color: #888;
-}
-
-.domain-offsite {
-    color: blue;
-}
-
-.modal-content {
-    background-color: #1f2833;
-    color: white;
- }
-
-.text-alert {
-    color: red !important;
-}
-
-.text-mine {
-    color: #ff4500 !important;
-}
-
-.badge-danger {
-    background-color: red;
-}
-
-.badge-success {
-    color: black;
-    background-color: lime !important;   
-}
-
-.badge-nsfw {
-    color: black;
-    background-color: hotpink !important;   
-}
-
-.badge-pinned {
-    color: black;
-    background-color: orange !important;   
-}
-
-.btn:hover, .btn:focus, .btn:active, .btn:active:focus, .btn.active, .open>.dropdown-toggle.btn {
-    color: #fff !important;
-    background-color: gray !important;
-    border-color: gray !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.btn-outline-primary {
-    color: blue;
-    border-color: blue;
+    color: cyan;
+    border-color: cyan;
 }
 
 .btn-outline-secondary {
